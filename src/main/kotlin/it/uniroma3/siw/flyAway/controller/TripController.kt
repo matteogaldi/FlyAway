@@ -90,4 +90,20 @@ class TripController(
         service.create(trip)
         return "redirect:/default"
     }
+
+    @PostMapping("/trip/update/{id}")
+    fun updateTrip(@PathVariable id: UUID, @ModelAttribute("trip") newTrip: Trip): String {
+        val oldTrip = service.read(id)
+        oldTrip.startDate = newTrip.startDate
+        oldTrip.endDate = newTrip.endDate
+        service.create(oldTrip);
+        return "redirect:/trip/$id"
+    }
+
+    @GetMapping("/trip/update/{id}")
+    fun getUpdateForm(model: Model, @PathVariable id: UUID): String {
+        val trip = service.read(id)
+        model["trip"] = trip
+        return "user/updateTrip"
+    }
 }

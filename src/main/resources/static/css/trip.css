@@ -12,6 +12,15 @@
     height: 2.5em;
     border-radius: 5px;
     color: white;
+    font-size: large;
+}
+
+h1 {
+    margin: .5em 0;
+}
+
+h2 {
+    margin-bottom: .5em;
 }
 
 .grid {
@@ -39,4 +48,15 @@
     height: 2.5em;
     border-radius: 5px;
     color: white;
+    font-size: large;
 }
+
+.button-footer {
+    display: flex;
+    width: 100%;
+    margin-top: 1em;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+

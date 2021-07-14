@@ -12,31 +12,35 @@
 
 <div class="container">
     <div class="grid">
-        <div class="details">
+        <div class="details card">
             <a onclick="goBack()">← Torna indietro</a>
-            <h1><span th:text="|${trip.city.name}|">roma</span></h1>
-            <h2 th:text="${trip.startDate} - ${trip.endDate}">12347</h2>
+            <h1><span th:text="|${trip.city.name}|">Roma</span></h1>
+            <h2><span th:text="${trip.startDate}">27/07</span> - <span th:text="${trip.endDate}">3/08</span></h2>
 
 
             <div>
-                <div th:text="${trip.user.name} ${trip.user.surname}">Matteo Galdi</div>
-                <p th:text="${trip.accommodation.name}">Hitlpn</p>
+                <div th:text="|${trip.user.name} ${trip.user.surname}|">Matteo Galdi</div>
+                <p th:text="${trip.accommodation.name}">Hilton</p>
                 <p th:text="|${trip.accommodation.address.street} ${trip.accommodation.address.streetNumber} ${trip.accommodation.address.zipCode}|">
-                    via cristoforo collmobo, 10, 001243
+                    via cristoforo colombo, 10, 001243
                 </p>
                 <p th:text="${trip.accommodation.price}">789€/notte</p>
-                <p th:text="${trip.accommodation.rating}">5 star</p>
+                <p th:text="${trip.accommodation.rating}"></p>
+                <p th:if="${trip.accommodation.type.animalsAllowed}">Gli animali sono ammessi</p>
+                <p th:if="${!trip.accommodation.type.animalsAllowed}">Gli animali NON sono ammessi</p>
 
             </div>
 
+            <div class="button-footer">
 
-            <form th:action="@{/trip/delete/{id}(id=${trip.id})}" method="get">
-                <button type="submit" class="button">Elimina</button>
-            </form>
+                <form th:action="@{/trip/delete/{id}(id=${trip.id})}" method="get">
+                    <button type="submit" class="button">Elimina</button>
+                </form>
 
-            <form th:action="@{/trip/update/{id}(id=${trip.id})}" method="get">
-                <button type="submit" class="button-delete">Modifica</button>
-            </form>
+                <form th:action="@{/trip/update/{id}(id=${trip.id})}" method="get">
+                    <button type="submit" class="button-delete">Modifica</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
