@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <p>Stai per prenotare, ecco i dettagli</p>
+    <div>
+        <p th:text="*{trip.user.name}">Matteo Galdi</p>
+        <p th:text="*{trip.accommodation.name}">Nome hotel</p>
+        <p th:text="*{trip.accommodation.type.description}">Tipo hotel</p>
+        <p th:text="*{trip.accommodation.type.animalsAllowed}">Animali ammessi</p>
+        <p th:text="|*{trip.accommodation.address.street} *{trip.accommodation.address.streetNumber}|">indirizzo
+            hotel</p>
+    </div>
+    <form th:action="@{/trip/new/{id}(id=${trip.accommodation.id})}" method="get">
+        <label for="input1">Dal</label>
+        <input type="date" id="input1" th:field="*{trip.startDate}">
+
+        <label for="input2">Al</label>
+        <input type="date" id="input2" th:field="*{trip.endDate}">
+
+        <button type="submit">Prenota</button>
+        <button type="reset">Annulla</button>
+    </form>
+</div>
+</body>
+</html>

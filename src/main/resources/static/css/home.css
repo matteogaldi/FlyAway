@@ -1,0 +1,24 @@
+@import "reset.css";
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+.button {
+    grid-column-start: 2;
+    margin-top: 2em;
+}
+
+.trip-list {
+    grid-column-start: 2;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

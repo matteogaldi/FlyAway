@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <h1>Benvenuto, registrati per cominciare</h1>
+    <form th:action="@{/register}" method="post">
+
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" th:field="${user.name}" required/>
+        <p th:if="${#fields.hasErrors('user.name')}" th:errors="${user.name}">Questo campo è obbligatorio</p>
+
+        <label for="surname">Surname:</label>
+        <input type="text" name="surname" id="surname" th:field="${user.surname}" required/>
+        <p th:if="${#fields.hasErrors('user.surname')}" th:errors="${user.surname}">Questo campo è obbligatorio</p>
+
+        <label for="dateOfBirth">Date of birth:</label>
+        <input type="date" name="dateOfBirth" id="dateOfBirth" th:field="${user.dateOfBirth}" required/>
+        <p th:if="${#fields.hasErrors('user.dateOfBirth')}" th:errors="${user.dateOfBirth}">Questo campo è obbligatorio</p>
+
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required/>
+        <p th:if="${#fields.hasErrors('credentials.email')}" th:errors="${credentials.email}">Questo campo è
+            obbligatorio</p>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required/>
+        <p th:if="${#fields.hasErrors('credentials')}">La password deve contenere almeno 6 caratteri</p>
+
+
+        <button type="submit" class="btn btn-primary">Registrati</button>
+        <a href="" th:href="@{/login}">Oppure accedi</a>
+    </form>
+</div>
+</body>
+</html>

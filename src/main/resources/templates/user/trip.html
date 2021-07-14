@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../static/css/trip.css" th:href="@{/css/trip.css}">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="grid">
+        <div class="details">
+            <a onclick="goBack()">← Torna indietro</a>
+            <h1><span th:text="|${trip.city.name}|">roma</span></h1>
+            <h2 th:text="${trip.startDate} - ${trip.endDate}">12347</h2>
+
+
+            <div>
+                <div th:text="${trip.user.name} ${trip.user.surname}">Matteo Galdi</div>
+                <p th:text="${trip.accommodation.name}">Hitlpn</p>
+                <p th:text="|${trip.accommodation.address.street} ${trip.accommodation.address.streetNumber} ${trip.accommodation.address.zipCode}|">
+                    via cristoforo collmobo, 10, 001243
+                </p>
+                <p th:text="${trip.accommodation.price}">789€/notte</p>
+                <p th:text="${trip.accommodation.rating}">5 star</p>
+
+            </div>
+
+
+            <form th:action="@{/trip/delete/{id}(id=${trip.id})}" method="get">
+                <button type="submit" class="button">Elimina</button>
+            </form>
+
+            <form th:action="@{/trip/update/{id}(id=${trip.id})}" method="get">
+                <button type="submit" class="button-delete">Modifica</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back()
+    }
+</script>
+
+</body>
+</html>
