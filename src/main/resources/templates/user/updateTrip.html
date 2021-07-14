@@ -11,27 +11,32 @@
 <body>
 
 <div class="container">
-    <p>Stai per prenotare, ecco i dettagli</p>
-    <div>
-        <p th:text="*{trip.user.name}">Matteo Galdi</p>
-        <p th:text="*{trip.accommodation.name}">Nome hotel</p>
-        <p th:text="*{trip.accommodation.type.description}">Tipo hotel</p>
-        <p th:text="*{trip.accommodation.type.animalsAllowed}">Animali ammessi</p>
-        <p th:text="|*{trip.accommodation.address.street} *{trip.accommodation.address.streetNumber}|">indirizzo
-            hotel</p>
-    </div>
-    <div class="card">
-        <form th:action="@{/trip/update/{id}(id=${trip.id})}" method="post">
-            <label for="input1">Dal</label>
-            <input type="date" id="input1" th:field="*{trip.startDate}">
+    <div class="grid">
+        <div class="card">
+            <div class="card-header">
+                <p>Modifica la data della tua prenotazione</p>
+            </div>
+            <div class="details">
+                <p th:text="|*{trip.user.name} *{trip.user.surname}|">Matteo Galdi</p>
+                <p th:text="*{trip.accommodation.name}">Nome hotel</p>
+                <p th:text="*{trip.accommodation.type.description}">Tipo hotel</p>
+                <p th:if="*{trip.accommodation.type.animalsAllowed}">Animali ammessi</p>
+                <p th:if="*{!trip.accommodation.type.animalsAllowed}">Animali non ammessi</p>
+                <p th:text="|*{trip.accommodation.address.street} *{trip.accommodation.address.streetNumber}|">indirizzo
+                    hotel</p>
+            </div>
+            <form th:action="@{/trip/update/{id}(id=${trip.id})}" method="post">
+                <label for="input1">Dal</label>
+                <input type="date" id="input1" th:field="*{trip.startDate}">
 
-            <label for="input2">Al</label>
-            <input type="date" id="input2" th:field="*{trip.endDate}">
+                <label for="input2">Al</label>
+                <input type="date" id="input2" th:field="*{trip.endDate}">
 
 
-            <button type="submit">Aggiorna</button>
-            <button type="reset">Annulla</button>
-        </form>
+                <button class="button" type="submit">Aggiorna</button>
+                <button class="button" type="reset">Annulla</button>
+            </form>
+        </div>
     </div>
 </div>
 

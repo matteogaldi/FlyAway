@@ -1,1 +1,30 @@
 @import "reset.css";
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    border: none;
+    margin: 1em;
+}
+
+.card {
+    grid-column-start: 2;
+}
+
+.details {
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
